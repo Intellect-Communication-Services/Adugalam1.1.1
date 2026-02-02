@@ -1,0 +1,121 @@
+.partner-wrapper {
+  min-height: 100vh;
+  background: #16a34a;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.t
+{
+    
+}
+.Partner-Form {
+  background: #fff;
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+}
+
+.Partner-header {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.Patner-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  grid-column: span 2;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* AVAILABLE GAMES */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.checkbox-card {
+  display: flex !important;          /* FORCE */
+  flex-direction: row !important;    /* FORCE */
+  align-items: center !important;
+  gap: 10px;
+
+  padding: 10px 18px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+
+.checkbox-card input {
+  margin: 0;                   /* 🔥 removes default spacing */
+  width: 16px;
+  height: 16px;
+  accent-color: #111;
+}
+
+.checkbox-text {
+  line-height: 1;
+}
+
+.checkbox-card:hover {
+  background: #f8f8f8;
+  border-color: #cfcfcf;
+}
+
+.checkbox-card:has(input:checked) {
+  border-color: #000;
+}
+
+/* BUTTON */
+.submit-btn {
+  grid-column: span 2;
+  padding: 16px;
+  border-radius: 14px;
+  background: #ea580c;
+  color: #fff;
+  border: none;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .Patner-container {
+    grid-template-columns: 1fr;
+  }
+  .form-group.full,
+  .submit-btn {
+    grid-column: span 1;
+  }
+}

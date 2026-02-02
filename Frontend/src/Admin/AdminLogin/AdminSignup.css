@@ -1,0 +1,83 @@
+.admin-signup-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f7fb;
+}
+
+.admin-signup {
+  width: 380px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.admin-signup h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-signup input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.admin-signup input:focus {
+  border-color: #1e88e5;
+}
+
+.admin-signup button {
+  width: 100%;
+  padding: 12px;
+  background: #1e88e5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.admin-signup button:hover {
+  background: #1565c0;
+}
+
+.password-box {
+  position: relative;
+}
+
+.password-box input {
+  padding-right: 42px;
+}
+
+.password-box span {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.login-link {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #1e88e5;
+  text-decoration: none;
+  font-weight: 500;
+}

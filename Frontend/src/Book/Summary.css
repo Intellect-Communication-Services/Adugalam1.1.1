@@ -1,0 +1,242 @@
+/* ================= BASE ================= */
+.summary-page {
+  min-height: 100vh;
+  background: #f5f6fa;
+  padding: 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Header */
+.summary-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  background: #eee;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.summary-header h2 {
+  flex: 1;
+  text-align: center;
+  margin-right: 40px;
+}
+
+/* Cards */
+.summary-card,
+.payment-summary {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+/* Payment Method */
+.payment-method {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.method-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step {
+
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Desktop behavior kept */
+.change-btn1 {
+  margin-left: 1110px;
+  color: red;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Payment Summary */
+.payment-summary h3 {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.discount {
+  color: #ff4d4d;
+}
+
+.payment-summary hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 14px 0;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* Confirm Button */
+.confirm-btn {
+  width: 100%;
+  background: #4caf50;
+  border: none;
+  padding: 16px;
+  border-radius: 14px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  background: #43a047;
+}
+
+/* ================= MOBILE ONLY ================= */
+@media (max-width: 768px) {
+  .summary-page {
+    padding: 14px;
+  }
+
+  .summary-header h2 {
+    font-size: 18px;
+    margin-right: 0;
+  }
+
+  .summary-card,
+  .payment-summary {
+    padding: 16px;
+  }
+
+  .summary-row,
+  .summary-line {
+    font-size: 13px;
+  }
+
+  .payment-method {
+    justify-content: space-between;
+  }
+
+  .change-btn1 {
+    margin-left: 0;
+    font-size: 13px;
+  }
+
+  .confirm-btn {
+    padding: 14px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .summary-row span:last-child {
+    max-width: 55%;
+    text-align: right;
+    font-size: 12.5px;
+  }
+
+  .payment-summary h3 {
+    font-size: 14px;
+  }
+}
+
+/* ================= SUCCESS POPUP ================= */
+.success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.success-modal {
+  background: #1f2d24;
+  color: white;
+  border-radius: 20px;
+  padding: 32px 24px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  background: #2ecc71;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 16px;
+}
+
+.success-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.outline-btn {
+  flex: 1;
+  background: transparent;
+  border: 2px solid #4caf50;
+  color: #4caf50;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.solid-btn {
+  flex: 1;
+  background: #4caf50;
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .success-actions {
+    flex-direction: column;
+  }
+}

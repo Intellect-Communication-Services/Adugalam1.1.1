@@ -1,0 +1,131 @@
+import "./TurfManagement.css";
+import { useEffect, useState } from "react";
+
+export default function TurfManagement() {
+  const [turfs, setTurfs] = useState([]);
+  const [form, setForm] = useState({
+    name: "",
+    vendor: "",
+    location: "",
+    price: ""
+  });
+
+  
+  useEffect(() => {
+    fetch("http://localhost:5000/api/turfs")
+      .then(res => res.json())
+      .then(data => setTurfs(data))
+      .catch(err => console.error(err));
+  }, []);
+
+  
+  const addTurf = async () => {
+    const res = await fetch("http://localhost:5000/api/turfs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form)
+    });
+
+    const newTurf = await res.json();
+    setTurfs([...turfs, newTurf]);
+    setForm({ name: "", vendor: "", location: "", price: "" });
+  };
+
+  
+  const toggleAvailability = async (id) => {
+    const res = await fetch(
+      `http://localhost:5000/api/turfs/${id}/toggle`,
+      { method: "PUT" }
+    );
+    const updated = await res.json();
+    setTurfs(turfs.map(t => (t._id === id ? updated : t)));
+  };
+
+  return (
+    <div className="turf-management">
+      <div className="header">
+        <h1>Turf Management</h1>
+        <p>Add, monitor and control all registered turfs</p>
+      </div>
+
+      
+      <div className="card">
+        <h3>Add New Turf</h3>
+
+        <input
+          placeholder="Turf Name"
+          value={form.name}
+          onChange={e => setForm({ ...form, name: e.target.value })}
+        />
+
+        <input
+          placeholder="Vendor"
+          value={form.vendor}
+          onChange={e => setForm({ ...form, vendor: e.target.value })}
+        />
+
+        <input
+          placeholder="Location"
+          value={form.location}
+          onChange={e => setForm({ ...form, location: e.target.value })}
+        />
+
+        <input
+          type="number"
+          placeholder="Price / Hour"
+          value={form.price}
+          onChange={e => setForm({ ...form, price: e.target.value })}
+        />
+
+        <button onClick={addTurf}>Add Turf</button>
+      </div>
+
+      
+      <div className="card">
+        <h3>Registered Turfs</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Vendor</th>
+              <th>Location</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Availability</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {turfs.map(turf => (
+              <tr key={turf._id}>
+                <td>{turf.name}</td>
+                <td>{turf.vendor}</td>
+                <td>{turf.location}</td>
+                <td>₹{turf.price}</td>
+                <td>
+                  <span className={`status ${turf.status}`}>
+                    {turf.status}
+                  </span>
+                </td>
+                <td>
+                  {turf.available ? (
+                    <span className="open">Open</span>
+                  ) : (
+                    <span className="closed">Closed</span>
+                  )}
+                </td>
+                <td>
+                  <button onClick={() => toggleAvailability(turf._id)}>
+                    {turf.available ? "Close Turf" : "Open Turf"}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}

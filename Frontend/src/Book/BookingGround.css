@@ -1,0 +1,263 @@
+/* GLOBAL */
+
+
+.booking-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: #000;
+
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.header h2 {
+  flex: 1;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.back-btn2 {
+  background: #d3d3d3;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.6rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+}
+
+/* CALENDAR */
+.calendar-section {
+  margin-bottom: 1.5rem;
+}
+
+.calendar-section h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.date-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.day-box
+{
+   text-align: center;
+  padding: 0.6rem 0;
+  border-radius: 0.6rem;
+  background:white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.date-box {
+  text-align: center;
+  padding: 0.6rem 0;
+  border-radius: 0.6rem;
+  background: rgb(196, 193, 193);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.day {
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.date-box.active {
+  background: #16a34a;
+  color: #000;
+  font-weight: bold;
+}
+
+/* GROUND LIST */
+.grounds-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  scroll-snap-type: x mandatory;
+}
+
+.ground-card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 11rem;
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.8rem;
+  background: #fff;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: 0.3s ease;
+}
+
+.ground-card.active {
+  border-color: #007bff;
+  background: #e9f2ff;
+}
+
+.ground-card img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.6rem;
+  object-fit: cover; /* responsive image */
+}
+
+.ground-info h5 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.ground-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* TIME SLOTS */
+.times-container {
+  display: flex;
+  gap: 0.8rem;
+  overflow-x: auto;
+  padding-bottom: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.time-card {
+  padding: 0.6rem 1rem;
+  border-radius: 1.2rem;
+  background: #d3d3d3;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: 0.3s;
+}
+
+.time-card.active {
+  background: #16a34a;
+  color: #000;
+}
+
+/* CONTINUE BUTTON */
+.continue-btn {
+  width: 100%;
+  background: #16a34a;
+  margin-top: 2rem;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.continue-btn:hover {
+  opacity: 0.9;
+}
+
+/* SCROLLBAR */
+.grounds-container::-webkit-scrollbar,
+.times-container::-webkit-scrollbar {
+  height: 0.4rem;
+}
+
+.grounds-container::-webkit-scrollbar-thumb,
+.times-container::-webkit-scrollbar-thumb {
+  background: #16a34a;
+  border-radius: 0.3rem;
+}
+
+/* -------------------------------------------
+   RESPONSIVE BREAKPOINTS
+-------------------------------------------- */
+
+/* Tablets ≤ 768px */
+@media (max-width: 768px) {
+  .booking-wrapper {
+    padding: 1rem;
+  }
+
+  .header h2 {
+    font-size: 1.2rem;
+  }
+
+  .ground-card {
+    min-width: 10rem;
+  }
+
+  .time-card {
+    padding: 0.5rem 0.8rem;
+  }
+  .gf-wrapper
+  {
+    margin-top: 130px;
+  }
+}
+
+/* Mobile ≤ 480px */
+@media (max-width: 480px) {
+  .booking-wrapper {
+    padding: 0.9rem;
+  }
+
+  .back-btn2 {
+    font-size: 1.3rem;
+  }
+
+  .ground-card {
+    min-width: 13rem;
+  }
+
+  .ground-card img {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  .time-card {
+    padding: 0.45rem 0.7rem;
+  }
+
+  .date-row {
+    gap: 0.25rem;
+  }
+
+  h2,
+  h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Small phones ≤ 360px */
+@media (max-width: 360px) {
+  .ground-card {
+    min-width: 8rem;
+  }
+
+  .ground-card img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .time-card {
+    font-size: 0.75rem;
+  }
+
+  .continue-btn {
+    font-size: 1rem;
+  }
+}

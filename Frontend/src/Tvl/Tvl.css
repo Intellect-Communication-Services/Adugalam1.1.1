@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+/* DESKTOP */
+
+.tvl-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  height: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Space Grotesk", sans-serif;
+  background: #ffffff;
+}
+
+/* LEFT */
+.tvl-left {
+  max-width: 600px;
+}
+
+.hashtag {
+  color: #18b95c;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.Play1 {
+  font-size: 60px;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin-right:500px;
+  margin-bottom: 20px;
+}
+
+.like-pro {
+  font-size: 80px;
+  font-weight: 800;
+  color: #e5e5e5;
+  margin-top: -20px;
+}
+
+.adugalam {
+  font-size: 120px;
+  font-weight: 700;
+  color: #e5e5e5;
+  margin-top: -90px;
+  margin-right: 500px;
+}
+
+/* RIGHT */
+.tvl-right {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;   /* ✅ correct alignment */
+}
+
+.hit-me {
+  font-size: 64px;
+  font-weight: 300;
+  font-style: italic;
+  color: #b0b0b0;
+  margin-bottom: 20px;
+}
+
+.heart-img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  display: block;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .tvl-wrapper {
+    height: auto;
+    padding: 24px 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;     
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tvl-left {
+    max-width: 60%;
+  }
+
+  .hashtag {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .Play1 {
+    font-size: 32px;
+    margin-bottom: -5px;
+  }
+
+  .like-pro {
+    font-size: 38px;
+    margin: 10px 0;
+    line-height: 1.2;
+  }
+
+  .adugalam {
+    font-size: 56px;
+    line-height: 1.1;
+    margin-top: 5px;
+  }
+
+  .tvl-right {
+    width: 40%;
+    align-items: flex-end;
+  }
+
+  .hit-me {
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-align: right;
+  }
+
+  .heart-img {
+    max-width: 140px;
+  }
+}

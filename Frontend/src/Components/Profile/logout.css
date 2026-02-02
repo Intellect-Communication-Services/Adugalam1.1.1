@@ -1,0 +1,107 @@
+/* --- Base Styles (Mobile-First) --- */
+
+.logout-container {
+    /* Full screen overlay. Keep fixed positioning. */
+    height: 100%; /* Changed from 100vh to 100% for better mobile browser compatibility */
+    width: 100%; /* Changed from 100vw to 100% */
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for better contrast */
+    position: fixed;
+    z-index: 1000; /* Increased z-index to ensure it sits above all other content */
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.popup {
+    /* **CRUCIAL CHANGE:** Use max-width and padding instead of fixed viewport units */
+    width: 90%; /* Take up 90% of the screen width on small devices */
+    max-width: 400px; /* Limits the size on tablets/desktops to keep it centered and readable */
+    height: auto; /* Let height be determined by content */
+    min-height: 250px; /* Ensures a minimum size */
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    /* Using modern 'gap' property */
+    gap: 20px; 
+    text-align: center;
+}
+
+.logout-icon {
+    /* Reduced size for better fit on small screens */
+    height: 60px; 
+    width: 60px;
+    padding: 15px; 
+    border-radius: 50%; /* Changed from 50px to 50% for standard circle */
+    background-color: var(--primary-green);
+    color: white;
+}
+
+.btn-holder {
+    display: flex;
+    width: 100%;
+    /* Ensure buttons wrap if the screen is very small, using 'gap' for spacing */
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    gap: 10px; /* Gap between buttons on wrap */
+}
+
+.btn-holder button {
+    border: 2px solid var(--primary-green);
+    padding: 10px 15px; /* Adjusted padding */
+    transition: 0.3s;
+    /* **CRUCIAL CHANGE:** Use 48% width to allow two buttons side-by-side */
+    width: 48%; 
+    min-width: 120px; /* Ensure buttons don't get too narrow */
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* --- Button Styling (No change needed here for responsiveness, but included for completeness) --- */
+
+.logout-btn {
+    background-color: var(--primary-green);
+    color: white;
+}
+
+.logout-btn:hover {
+    background-color: white;
+    color: var(--primary-green);
+}
+
+.cancel-btn:hover {
+    background-color: var(--primary-green);
+    color: white;
+}
+
+/* --- Media Query for Larger Screens (Tablets and Desktops) --- */
+@media (min-width: 600px) {
+    .popup {
+        /* On larger screens, center the content better by applying a specific max-width */
+        width: auto;
+        max-width: 450px; 
+        min-height: 30vh; /* Allow it to be slightly taller */
+    }
+
+    .logout-icon {
+        /* Restore original, larger size for desktop */
+        height: 100px; 
+        width: 100px;
+        padding: 20px;
+    }
+    
+    .btn-holder {
+        flex-wrap: nowrap; /* Prevent wrapping on desktop */
+        gap: 20px;
+    }
+
+    .btn-holder button {
+        width: 180px; /* Restore original fixed width */
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,10 @@
+.vendor-layout {
+  display: flex;
+}
+
+.vendor-content {
+  margin-left: 240px; 
+  padding: 30px;
+  min-height: 100vh;
+  background: #f5f7f6;
+}

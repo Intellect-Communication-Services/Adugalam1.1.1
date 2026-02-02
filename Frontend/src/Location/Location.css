@@ -1,0 +1,52 @@
+.location
+{
+    margin-left: 20px;
+    margin-top: 30px;
+}
+.pick-location
+{
+    display: flex;
+    text-align: center;
+    font-weight: 1000;
+    font-size: 25px;
+    min-width: 500px;
+    row-gap: 500px;
+}
+.use-current-location
+{
+    background-color: rgb(212, 218, 224);
+    display: flex;
+    min-width:230px;
+    border-radius: 8px;
+    height: 40px;
+    margin-left: 100px;
+}
+.use
+{
+    margin-top: 5px;
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+.current
+{
+    margin-top: 8px;
+    margin-left: 10px;
+}
+.popularrr
+{
+    margin-left: 60px;
+}
+.use-current-location1
+{
+    display: flex;
+    min-width:230px;
+    border-radius: 8px;
+    height: 40px;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+.all
+{
+    margin-top: -30px;
+}

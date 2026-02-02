@@ -1,0 +1,85 @@
+/* PAGE */
+.privacy-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+/* CARD */
+.privacy-card {
+  width: 100%;
+  height: 100vh;
+  background: #fbf6f6;
+  padding: 16px;
+  color: #1f1f1f;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.privacy-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.privacy-header h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 450px;
+}
+
+
+/* BACK BUTTON */
+.back-btn {
+  background: #1f1f1f;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* CONTENT */
+.privacy-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.privacy-content h3 {
+  font-size: 14px;
+  margin: 14px 0 6px;
+  font-weight: 600;
+}
+
+.privacy-content p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* SCROLLBAR */
+.privacy-content::-webkit-scrollbar {
+  width: 4px;
+}
+.privacy-content::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+
+/* ================= DESKTOP ================= */
+@media (min-width: 768px) {
+  .privacy-page {
+    padding: 0;
+  }
+
+  .privacy-card {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

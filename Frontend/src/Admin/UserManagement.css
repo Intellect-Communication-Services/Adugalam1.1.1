@@ -1,0 +1,133 @@
+
+
+.subtitle {
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+
+table {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+thead {
+  background: #1e293b;
+  color: white;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
+}
+
+tbody tr:hover {
+  background: #f1f5f9;
+}
+
+
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.active-user {
+  background: #bbf7d0;
+  color: #166534;
+}
+
+.blocked {
+  background: #fecaca;
+  color: #7f1d1d;
+}
+
+
+button {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.block {
+  background: #ef4444;
+  color: white;
+}
+
+.unblock {
+  background: #22c55e;
+  color: white;
+}
+
+.view {
+  background: #64748b;
+  color: white;
+}
+
+.review-btn {
+  background: #14532d;
+  color: white;
+  margin-top: 5px;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  width: 420px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+
+.review-card {
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+  border-left: 4px solid #22c55e;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.rating {
+  font-weight: 700;
+  color: #14532d;
+}
+
+.comment {
+  font-style: italic;
+}

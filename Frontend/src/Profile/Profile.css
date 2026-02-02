@@ -1,0 +1,63 @@
+/* FULL DARK BACKGROUND FIX */
+body {
+  margin: 0;
+  
+}
+
+.profile-page {
+  min-height: 100vh;
+  background: white;
+  padding: 20px;
+  color: black;
+}
+
+/* Title */
+.profile-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* List container */
+.profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Individual row */
+.profile-item {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Hover */
+.profile-item:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Text */
+.profile-item span {
+  flex: 1;
+  font-size: 15px;
+}
+
+/* Icons */
+.profile-item svg {
+  font-size: 18px;
+  color: #9adf8f;
+}
+
+/* Logout special color */
+.profile-item.logout svg,
+.profile-item.logout span {
+  color: #ff6b6b;
+}

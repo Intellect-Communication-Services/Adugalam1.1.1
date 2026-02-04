@@ -1,6 +1,11 @@
 import "./AddVendor.css";
-import React, { useState, useRef } from "react";
-import { GoogleMap, Rectangle, useJsApiLoader } from "@react-google-maps/api";
+import React, { useState, useRef, useMemo } from "react";
+import {
+  GoogleMap,
+  Rectangle,
+  StandaloneSearchBox,
+  useJsApiLoader,
+} from "@react-google-maps/api";
 import { useNavigate } from "react-router-dom";
 
 const containerStyle = {
@@ -12,22 +17,27 @@ const containerStyle = {
 
 const defaultCenter = { lat: 13.0827, lng: 80.2707 };
 
-const LOCATIONS = {
-  Tirunelveli: { lat: 8.7139, lng: 77.7567 },
-  Kanniyakumari: { lat: 8.0883, lng: 77.5385 },
-  Virudhunagar: { lat: 9.5851, lng: 77.9575 },
-  Tenkasi: { lat: 8.9591, lng: 77.3152 },
-  Thoothukudi: { lat: 8.7642, lng: 78.1348 },
-};
+/* District list only */
+const LOCATIONS = [
+  "Tirunelveli",
+  "Kanniyakumari",
+  "Virudhunagar",
+  "Tenkasi",
+  "Thoothukudi",
+];
 
 const AddVendor = () => {
   const navigate = useNavigate();
+
   const mapRef = useRef(null);
   const rectangleRef = useRef(null);
+  const searchBoxRef = useRef(null);
+
+  const libraries = useMemo(() => ["places"], []);
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_KEY,
-    libraries: ["places"],
+    libraries,
   });
 
   const [center, setCenter] = useState(defaultCenter);
@@ -55,6 +65,45 @@ const AddVendor = () => {
 
   const updateForm = (updated) => setForm(updated);
 
+  /* ---------- Search ---------- */
+  const onSearchLoad = (ref) => {
+    searchBoxRef.current = ref;
+  };
+
+  const onPlacesChanged = () => {
+    const places = searchBoxRef.current.getPlaces();
+    if (!places || places.length === 0) return;
+
+    const place = places[0];
+    if (!place.geometry?.location) return;
+
+    const lat = place.geometry.location.lat();
+    const lng = place.geometry.location.lng();
+
+    const newCenter = { lat, lng };
+
+    setCenter(newCenter);
+    mapRef.current?.panTo(newCenter);
+    mapRef.current?.setZoom(16);
+
+    const offset = 0.002;
+    const newBounds = {
+      north: lat + offset,
+      south: lat - offset,
+      east: lng + offset,
+      west: lng - offset,
+    };
+
+    setRectangleBounds(newBounds);
+
+    updateForm({
+      ...form,
+      latitude: lat.toFixed(6),
+      longitude: lng.toFixed(6),
+    });
+  };
+
+  /* ---------- Form ---------- */
   const handleChange = (e) => {
     updateForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -69,6 +118,7 @@ const AddVendor = () => {
     updateForm({ ...form, Avaliablegames: games });
   };
 
+  /* ---------- Map ---------- */
   const onMapLoad = (map) => (mapRef.current = map);
   const onRectangleLoad = (rect) => (rectangleRef.current = rect);
 
@@ -78,8 +128,10 @@ const AddVendor = () => {
     const b = rectangleRef.current.getBounds();
     if (!b) return;
 
-    const lat = (b.getNorthEast().lat() + b.getSouthWest().lat()) / 2;
-    const lng = (b.getNorthEast().lng() + b.getSouthWest().lng()) / 2;
+    const lat =
+      (b.getNorthEast().lat() + b.getSouthWest().lat()) / 2;
+    const lng =
+      (b.getNorthEast().lng() + b.getSouthWest().lng()) / 2;
 
     updateForm({
       ...form,
@@ -94,6 +146,16 @@ const AddVendor = () => {
 
     setCenter({ lat, lng });
 
+    const offset = 0.002;
+    const newBounds = {
+      north: lat + offset,
+      south: lat - offset,
+      east: lng + offset,
+      west: lng - offset,
+    };
+
+    setRectangleBounds(newBounds);
+
     updateForm({
       ...form,
       latitude: lat.toFixed(6),
@@ -101,23 +163,15 @@ const AddVendor = () => {
     });
   };
 
+  /* ---------- District Dropdown ---------- */
   const handleLocationSelect = (e) => {
-    const loc = e.target.value;
-    if (!loc) return;
-
-    const coords = LOCATIONS[loc];
-    setCenter(coords);
-
     updateForm({
       ...form,
-      location: loc,
-      latitude: coords.lat.toFixed(6),
-      longitude: coords.lng.toFixed(6),
+      location: e.target.value,
     });
-
-    mapRef.current?.panTo(coords);
   };
 
+  /* ---------- Submit ---------- */
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Vendor Added");
@@ -134,22 +188,43 @@ const AddVendor = () => {
         <form className="vendor-form-grid" onSubmit={handleSubmit}>
           <div className="vendor-field">
             <label>Venue Name</label>
-            <input name="venuename" value={form.venuename} onChange={handleChange} required />
+            <input
+              name="venuename"
+              value={form.venuename}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <div className="vendor-field">
             <label>Owner Name</label>
-            <input name="ownername" value={form.ownername} onChange={handleChange} required />
+            <input
+              name="ownername"
+              value={form.ownername}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <div className="vendor-field">
             <label>Email</label>
-            <input type="email" name="email" value={form.email} onChange={handleChange} required />
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <div className="vendor-field">
             <label>Phone</label>
-            <input name="phone" value={form.phone} onChange={handleChange} required />
+            <input
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <div className="vendor-field full">
@@ -170,13 +245,25 @@ const AddVendor = () => {
           </div>
 
           <div className="vendor-field full">
-            <label>Select Location</label>
+            <label>District</label>
+
             <select onChange={handleLocationSelect}>
-              <option value="">Select</option>
-              {Object.keys(LOCATIONS).map((l) => (
-                <option key={l}>{l}</option>
+              <option value="">Select District</option>
+              {LOCATIONS.map((district) => (
+                <option key={district}>{district}</option>
               ))}
             </select>
+
+            <StandaloneSearchBox
+              onLoad={onSearchLoad}
+              onPlacesChanged={onPlacesChanged}
+            >
+              <input
+                type="text"
+                placeholder="Search exact turf location..."
+                className="map-search-input"
+              />
+            </StandaloneSearchBox>
 
             <GoogleMap
               mapContainerStyle={containerStyle}
@@ -207,7 +294,12 @@ const AddVendor = () => {
 
           <div className="vendor-field">
             <label>Total Turf</label>
-            <select name="totalturf" value={form.totalturf} onChange={handleChange} required>
+            <select
+              name="totalturf"
+              value={form.totalturf}
+              onChange={handleChange}
+              required
+            >
               <option value="">Select</option>
               {[1,2,3,4,5].map(n => (
                 <option key={n}>{n}</option>
@@ -215,7 +307,9 @@ const AddVendor = () => {
             </select>
           </div>
 
-          <button className="vendor-submit-btn">Submit Vendor</button>
+          <button className="vendor-submit-btn">
+            Submit Vendor
+          </button>
         </form>
       </div>
     </div>

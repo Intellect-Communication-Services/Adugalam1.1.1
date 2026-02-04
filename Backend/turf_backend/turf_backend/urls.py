@@ -23,11 +23,15 @@ from django.urls import path,include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include('core.urls')),
-    # path("core/", include('core.urls')),
-    # Vendor React flow APIs (dashboard, add turf, booking management, schedule, discounts)
-    path("core/", include('core.vendor_urls')),
-    # Admin React flow APIs (KPIs, bookings list, users list, etc.)
-    path("core/", include('core.admin_urls')),
-
-
 ]
+    #-------- TURF --------
+
+    
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )

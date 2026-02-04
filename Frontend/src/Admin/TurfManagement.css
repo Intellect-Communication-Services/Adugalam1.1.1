@@ -1,117 +1,198 @@
-
-.header h1 {
-  color: #1e293b;
+/* ---------- PAGE ---------- */
+.turf-management {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f6f9;
+  min-height: 100vh;
 }
 
-.header p {
-  color: #64748b;
-  margin-top: 5px;
+/* ---------- HEADER ---------- */
+.header {
+  background: white;
+  padding: 25px 20px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-
-.card {
-  background: #ffffff;
-  padding: 22px;
-  border-radius: 12px;
-  margin-top: 25px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+.header-row {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
 }
 
-
-.form-group {
-  margin-bottom: 16px;
+.header-row p {
+  margin: 5px 0 0;
+  color: #666;
 }
 
-label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #334155;
-}
-
-input,
-select {
-  width: 100%;
-  padding: 10px;
+/* Vendor button */
+.vendor-btn {
+  margin-top: 15px;
+  padding: 10px 22px;
+  background: #198754;
+  color: white;
+  border: none;
   border-radius: 6px;
-  border: 1px solid #cbd5e1;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.vendor-btn:hover {
+  background: #157347;
+}
+
+/* ---------- CARDS ---------- */
+.card {
+  background: white;
+  padding: 25px;
+  margin: 25px auto;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  max-width: 1000px;
+}
+
+/* ---------- FORM ---------- */
+.card h3 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.card input:focus {
+  border-color: #198754;
+  outline: none;
+}
+
+/* Main button */
+.card button {
+  width: 100%;
+  padding: 13px;
+  background: #198754;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.card button:hover {
+  background: #157347;
+}
+
+/* ---------- TABLE ---------- */
+.table-container {
+  overflow-x: auto;
+}
+
+.card table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+/* Header */
+th {
+  background: #198754;
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+  text-align: left;
+}
+
+/* Rows */
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  color: #333;
   font-size: 14px;
 }
 
+tbody tr:hover {
+  background: #f3f8f5;
+}
 
-button {
-  background: #14532d;
-  color: white;
+/* Status */
+.status {
+  padding: 4px 8px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  font-size: 12px;
+}
+
+.status.active {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #664d03;
+}
+
+.status.blocked {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.open {
+  color: green;
+  font-weight: bold;
+}
+
+.closed {
+  color: red;
+  font-weight: bold;
+}
+
+/* Action button */
+td button {
+  padding: 6px 12px;
+  background: #ffc107;
   border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 13px;
 }
 
-button:hover {
-  opacity: 0.9;
+td button:hover {
+  background: #e0a800;
 }
 
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 18px;
-}
+  .header-row {
+    text-align: center;
+  }
 
-th,
-td {
-  padding: 12px;
-  border-bottom: 1px solid #e2e8f0;
-  text-align: left;
-}
+  .vendor-btn {
+    width: 100%;
+    margin-top: 15px;
+  }
 
-th {
-  background: #14532d;
-  color: white;
-}
+  .card {
+    margin: 15px;
+    padding: 18px;
+  }
 
+  .card table {
+    min-width: 650px;
+  }
 
-.status {
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-}
+  th, td {
+    padding: 10px;
+    font-size: 13px;
+  }
 
-.status.active {
-  background: #bbf7d0;
-  color: #166534;
-}
-
-.status.disabled {
-  background: #fecaca;
-  color: #7f1d1d;
-}
-
-
-.open {
-  background: #dcfce7;
-  color: #166534;
-  padding: 5px 10px;
-  border-radius: 14px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.closed {
-  background: #fee2e2;
-  color: #7f1d1d;
-  padding: 5px 10px;
-  border-radius: 14px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.time {
-  display: block;
-  font-size: 12px;
-  color: #475569;
-  margin-top: 4px;
+  .card button {
+    font-size: 14px;
+  }
 }

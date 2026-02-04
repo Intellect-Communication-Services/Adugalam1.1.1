@@ -46,6 +46,7 @@ import VendorLogin from "./Vendor/VendorLogin/VendorLogin.jsx";
 import VendorSignup from "./Vendor/VendorLogin/VendorSignup.jsx";
 import AdminLogin from "./Admin/AdminLogin/AdminLogin.jsx";
 import AdminSignup from "./Admin/AdminLogin/AdminSignup.jsx";
+import AddVendor from "./Admin/AddVendor/AddVendor.jsx";
 
 
 import Addturf from "./Vendor/AddTurf.jsx";
@@ -144,6 +145,7 @@ const App = () => {
           <Route path="/PaymentsReport" element={<PaymentsReport  />}></Route>
           <Route path="/Sidebar" element={<Sidebar  />}></Route>
           <Route path="/TurfManagement" element={<TurfManagement  />}></Route>
+          <Route path="/AddVendor" element={<AddVendor  />}></Route>
           <Route path="/UserManagement" element={<UserManagement  />}></Route>
           <Route path="/Vendor" element={<Vendor  />}></Route>
 

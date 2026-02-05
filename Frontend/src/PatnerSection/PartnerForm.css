@@ -119,3 +119,137 @@
     grid-column: span 1;
   }
 }
+
+
+/* POLICY SECTION */
+.policy-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 6px;
+}
+
+.policy-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  
+}
+
+.policy-item input {
+  width: 16px;
+  height: 16px;
+  accent-color: #16a34a;
+}
+
+.policy-link {
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  
+}
+
+
+
+.policy-link:hover {
+  color: #1d4ed8;
+}
+
+/* DISABLED BUTTON */
+.submit-btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+  .partner-wrapper {
+    padding: 10px;
+  }
+
+  .Partner-Form {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .Partner-header {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+
+  /* FORM GRID */
+  .Patner-container {
+    gap: 16px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  /* MAP */
+  .gm-style {
+    border-radius: 12px;
+  }
+
+  /* Reduce map height */
+  div[style*="height: 260px"] {
+    height: 200px !important;
+  }
+
+  /* AVAILABLE GAMES */
+  .checkbox-group {
+    gap: 10px;
+  }
+
+  .checkbox-card {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .checkbox-card input {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* POLICY SECTION */
+  .policy-item {
+    font-size: 13px;
+    align-items: flex-start;
+  }
+
+  .policy-item span {
+    line-height: 1.4;
+  }
+
+  .policy-link {
+    font-size: 13px;
+  }
+
+  /* BUTTON */
+  .submit-btn {
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+}

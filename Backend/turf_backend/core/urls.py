@@ -1,110 +1,67 @@
 from django.urls import path
-from rest_framework_simplejwt.views import TokenObtainPairView
-from django.conf import settings
-from django.conf.urls.static import static
-from . import views
-
-
-
-
-from core.views import (
-    send_otp,
-    verify_otp,
-    signup,
-    login,
-    home,
-    reset_password,
-    list_turfs,
-    turf_details,
-    ground_availability,
-    nearby_turfs,
-    add_to_cart,
-    confirm_booking,
-    create_payment_order,
-    verify_payment,
-    turf_games,
-    admin_send_otp,
-    admin_login,
-    admin_verify_otp,
-    dashboard_summary,
-    dashboard_weekly,
-    users_list,
-    user_toggle_active,
-    turfs_list,
-    bookings_list,
-    booking_cancel,
-    payments_list,
-    vendors_list,
-    vendor_approve,
-    vendor_reject,
-    turfs_approve,
-    turfs_reject,
-    _ensure_vendor,
-    vendor_create_slots,
-    vendor_dashboard,
-    vendor_list_slots,
-    vendor_list_turfs,
-    vendor_add_turf,
-    vendor_booking_list,
-    vendor_update_booking_status,
-    vendor_list_discounts,
-    vendor_create_discount,
-)
+from core import views
 
 urlpatterns = [
-    
-    #-------- USER AUTH --------
-    path("send-otp/", send_otp),
-    path("verify-otp/", verify_otp),
-    path("signup/", signup),
-    path("login/", login),
-    path("home/", home),
-    path("reset-password/",reset_password),
 
-    path('turfs/<int:turf_id>/games', turf_games),
+    # ---------- USER AUTH ----------
+    path("send-otp/", views.send_otp),
+    path("verify-otp/", views.verify_otp),
+    path("signup/", views.signup),
+    path("login/", views.login),
+    path("reset-password/", views.reset_password),
+    path("home/", views.home),
 
+    # ---------- TURFS ----------
+    path("turfs/", views.list_turfs),
+    path("turfs/<int:turf_id>/", views.turf_details),
+    path("turfs/<int:turf_id>/games/", views.turf_games),
+    path("turfs/nearby/", views.nearby_turfs),
+    path("grounds/<int:ground_id>/availability/", views.ground_availability),
 
-    # -------- TURFS --------
-    path('turfs/', list_turfs),
-    path('turfs/<int:turf_id>/', turf_details),
-    path('grounds/<int:ground_id>/availability/', ground_availability),
-    path('turfs/nearby/',nearby_turfs),
+    # ---------- BOOKINGS ----------
+    path("cart/add/", views.add_to_cart),
+    path("booking/confirm/", views.confirm_booking),
+    path("my-bookings/", views.my_bookings),
 
-    # -------- BOOKINGS --------
-    path('cart/add/', add_to_cart),
-    path('booking/confirm/', confirm_booking),
+    # ---------- PAYMENTS ----------
+    path("payment/create-order/", views.create_payment_order),
+    path("payment/verify/", views.verify_payment),
 
-    # -------- PAYMENTS --------
-    path('payment/create-order/', create_payment_order),
-    path('payment/verify/', verify_payment),
+    # ---------- ADMIN ----------
+    path("admin/send-otp/", views.admin_send_otp),
+    path("admin/verify-otp/", views.admin_verify_otp),
+    path("admin/login/", views.admin_login),
 
-    # ------- Admin ---------
-    path("admin/send-otp/", admin_send_otp),
-    path("admin/verify-otp/", admin_verify_otp),
-    path("admin/login/", admin_login),
-    path("admin/dashboard/summary/", dashboard_summary ),
-    path("admin/dashboard/weekly/", dashboard_weekly),
-    path("admin/vendors/", vendors_list),
-    path("admin/vendors/<int:user_id>/approve/", vendor_approve),
-    path("admin/vendors/<int:user_id>/reject/", vendor_reject),
-    path("admin/users/", users_list),
-    path("admin/users/<int:user_id>/toggle-active/", user_toggle_active),
-    path("admin/turfs/", turfs_list),
-    path("admin/bookings/", bookings_list),
-    path("admin/bookings/<int:booking_id>/cancel/", booking_cancel ),
-    path("admin/payments/", payments_list ),
-    path("admin/turfs/<int:turf_id>/approve/", turfs_approve),
-    path("admin/turfs/<int:turf_id>/reject/", turfs_reject),
+    path("admin/dashboard/summary/", views.dashboard_summary),
+    path("admin/dashboard/weekly/", views.dashboard_weekly),
 
-    # ------ Vendor --------------
+    path("admin/users/", views.users_list),
+    path("admin/users/<int:user_id>/toggle-active/", views.user_toggle_active),
 
-    path("vendor/dashboard/", vendor_dashboard),
-    path("vendor/turfs/", vendor_list_turfs),
-    path("vendor/turfs/create/", vendor_add_turf),
-    path("vendor/bookings/", vendor_booking_list),
-    path("vendor/bookings/update/", vendor_update_booking_status),
-    path("vendor/slots/", vendor_list_slots),
-    path("vendor/slots/create/", vendor_create_slots),
-    path("vendor/discounts/", vendor_list_discounts),
-    path("vendor/discounts/create/", vendor_create_discount),
+    path("admin/turfs/", views.turfs_list),
+    path("admin/turfs/<int:turf_id>/approve/", views.turfs_approve),
+    path("admin/turfs/<int:turf_id>/reject/", views.turfs_reject),
+
+    path("admin/bookings/", views.bookings_list),
+    path("admin/bookings/<int:booking_id>/cancel/", views.booking_cancel),
+
+    path("admin/payments/", views.payments_list),
+
+    path("admin/vendors/", views.vendors_list),
+    path("admin/vendors/<int:user_id>/approve/", views.vendor_approve),
+    path("admin/vendors/<int:user_id>/reject/", views.vendor_reject),
+
+    # ---------- VENDOR ----------
+    path("vendor/dashboard/", views.vendor_dashboard),
+    path("vendor/turfs/", views.vendor_list_turfs),
+    path("vendor/turfs/create/", views.vendor_add_turf),
+
+    path("vendor/bookings/", views.vendor_booking_list),
+    path("vendor/bookings/update/", views.vendor_update_booking_status),
+
+    path("vendor/slots/", views.vendor_list_slots),
+    path("vendor/slots/create/", views.vendor_create_slots),
+
+    path("vendor/discounts/", views.vendor_list_discounts),
+    path("vendor/discounts/create/", views.vendor_create_discount),
 ]

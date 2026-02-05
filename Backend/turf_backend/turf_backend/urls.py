@@ -14,20 +14,34 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# from django.contrib import admin
+# from django.urls import path,include
+
+
+
+
+# urlpatterns = [
+#     path("admin/", admin.site.urls),
+#     path("api/", include('core.urls')),
+#     # path("core/", include('core.urls')),
+#     # Vendor React flow APIs (dashboard, add turf, booking management, schedule, discounts)
+#     path("core/", include('core.vendor_urls')),
+#     # Admin React flow APIs (KPIs, bookings list, users list, etc.)
+#     path("core/", include('core.admin_urls')),
+
+
+# ]
+
+
 from django.contrib import admin
-from django.urls import path,include
-
-
-
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include('core.urls')),
-    # path("core/", include('core.urls')),
-    # Vendor React flow APIs (dashboard, add turf, booking management, schedule, discounts)
-    path("core/", include('core.vendor_urls')),
-    # Admin React flow APIs (KPIs, bookings list, users list, etc.)
-    path("core/", include('core.admin_urls')),
-
-
+    path("core/", include("core.urls")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

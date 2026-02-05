@@ -1,7 +1,10 @@
 import "./TurfManagement.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function TurfManagement() {
+  const navigate = useNavigate();
+
   const [turfs, setTurfs] = useState([]);
   const [form, setForm] = useState({
     name: "",
@@ -10,7 +13,6 @@ export default function TurfManagement() {
     price: ""
   });
 
-  
   useEffect(() => {
     fetch("http://localhost:5000/api/turfs")
       .then(res => res.json())
@@ -18,7 +20,6 @@ export default function TurfManagement() {
       .catch(err => console.error(err));
   }, []);
 
-  
   const addTurf = async () => {
     const res = await fetch("http://localhost:5000/api/turfs", {
       method: "POST",
@@ -31,7 +32,6 @@ export default function TurfManagement() {
     setForm({ name: "", vendor: "", location: "", price: "" });
   };
 
-  
   const toggleAvailability = async (id) => {
     const res = await fetch(
       `http://localhost:5000/api/turfs/${id}/toggle`,
@@ -44,11 +44,21 @@ export default function TurfManagement() {
   return (
     <div className="turf-management">
       <div className="header">
-        <h1>Turf Management</h1>
-        <p>Add, monitor and control all registered turfs</p>
+        <div className="header-row">
+          
+            <h1 className="turf-manage">Turf Management</h1>
+            <p>Add, monitor and control all registered turfs</p>
+          
+
+          <button
+            className="vendor-btn"
+            onClick={() => navigate("/AddVendor")}
+          >
+            Add Vendor
+          </button>
+        </div>
       </div>
 
-      
       <div className="card">
         <h3>Add New Turf</h3>
 
@@ -64,10 +74,16 @@ export default function TurfManagement() {
           onChange={e => setForm({ ...form, vendor: e.target.value })}
         />
 
-        <input
+        {/* <input
           placeholder="Location"
           value={form.location}
           onChange={e => setForm({ ...form, location: e.target.value })}
+        /> */}
+
+         <input
+          placeholder="Game"
+          value={form.game}
+          onChange={e => setForm({ ...form, game: e.target.value })}
         />
 
         <input
@@ -80,7 +96,6 @@ export default function TurfManagement() {
         <button onClick={addTurf}>Add Turf</button>
       </div>
 
-      
       <div className="card">
         <h3>Registered Turfs</h3>
 

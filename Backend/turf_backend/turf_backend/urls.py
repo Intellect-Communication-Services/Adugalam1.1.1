@@ -40,8 +40,24 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+<<<<<<< HEAD
     path("core/", include("core.urls")),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+=======
+    path("api/", include('core.urls')),
+]
+    #-------- TURF --------
+
+    
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )
+>>>>>>> acbb40213ce7a15ef01c43b4ea0072a0f332e29c
